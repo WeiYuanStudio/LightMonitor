@@ -63,15 +63,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="success table-success">
-                            <td scope="row">1</td>
-                            <td scope="row">Online</td>
-                            <td scope="row">Adam's Desktop</td>
-                            <td scope="row">127.0.0.1</td>
-                            <td scope="row">Win 10</td>
-                            <td scope="row">1064</td>
-                            <td scope="row">19:02</td>
-                        </tr>
                         <%
                             for (ClientBean client : ClientsDAO.getClientsDao().getClientList()) {
                         %>
@@ -96,6 +87,21 @@
                         %>
                         </tbody>
                     </table>
+                    <%
+                        if (ClientsDAO.getClientsDao().getClientList().isEmpty()) {
+                    %>
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Server list is empty</h4>
+                        <p>Aww yeah, you successfully read this important alert message. This example text is going to
+                            run a bit longer so that you can see how spacing within an alert works with this kind of
+                            content.</p>
+                        <hr>
+                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and
+                            tidy.</p>
+                    </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@ public class Register extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
 
         String clientName = null;
-        clientName = req.getParameter("clientName");
+        clientName = req.getParameter("clientname");
         if (clientName != null) {
             ClientBean client = register(clientName);
             ResponseBody responseBody = new ResponseBody(200, "OK", client.getUserSession(), client.getId());
