@@ -1,26 +1,31 @@
 package club.piclight.lightmonitor.DAO;
 
+import java.util.Calendar;
+
 import club.piclight.lightmonitor.Bean.ClientBean;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class ClientsDAO {
+    private static int MIN_OFFSET = 1;
     private static ClientsDAO clientsDAO = new ClientsDAO();
     private ArrayList<ClientBean> clientBeans = new ArrayList<ClientBean>();
 
-    private ClientsDAO(){
+    private ClientsDAO() {
         ClientBean client = new ClientBean();
         client.setClientName("Adam's PC");
         client.setClientIP("1.1.1.1");
         client.setClientInfo("Windows 10");
         client.setPkgNum(1);
-        client.setLastestOnline(new Date());
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MINUTE, +1);
+        client.setLastestOnline(now);
         registerClient(client);
     }
 
     private void registerClient(ClientBean client) {
-        client.setId(clientBeans.size() + 1);
+        client.setId(clientBeans.size() + MIN_OFFSET);
         clientBeans.add(client);
     }
 

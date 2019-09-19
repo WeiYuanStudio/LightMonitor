@@ -7,6 +7,8 @@
 --%>
 <%@ page import="club.piclight.lightmonitor.DAO.ClientsDAO" %>
 <%@ page import="club.piclight.lightmonitor.Bean.ClientBean" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Calendar" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,14 +75,21 @@
                         <%
                             for (ClientBean client : ClientsDAO.getClientsDao().getClientList()) {
                         %>
-                        <tr class="success table-success">
-                            <td scope="row"><%= client.getId()%></td>
-                            <td scope="row">Unknow</td>
-                            <td scope="row"><%= client.getClientName()%></td>
-                            <td scope="row"><%= client.getClientIP() %></td>
-                            <td scope="row"><%= client.getClientInfo()%></td>
-                            <td scope="row"><%= client.getPkgNum()%></td>
-                            <td scope="row"><%= client.getLastestOnline()%></td>
+                        <tr class="success <%= (client.getLastestOnline().compareTo(Calendar.getInstance()) > 0 ? "table-success" : "table-danger")%>">
+                            <td scope="row"><%= client.getId()%>
+                            </td>
+                            <td scope="row"><%= (client.getLastestOnline().compareTo(Calendar.getInstance()) > 0 ? "Online" : "Offline")%>
+                            </td>
+                            <td scope="row"><%= client.getClientName()%>
+                            </td>
+                            <td scope="row"><%= client.getClientIP() %>
+                            </td>
+                            <td scope="row"><%= client.getClientInfo()%>
+                            </td>
+                            <td scope="row"><%= client.getPkgNum()%>
+                            </td>
+                            <td scope="row"><%= client.getLastestOnline().getTime()%>
+                            </td>
                         </tr>
                         <%
                             }

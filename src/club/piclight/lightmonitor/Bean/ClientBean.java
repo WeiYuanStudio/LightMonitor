@@ -1,5 +1,6 @@
 package club.piclight.lightmonitor.Bean;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class ClientBean {
@@ -9,7 +10,7 @@ public class ClientBean {
     private String clientIP;
     private String clientInfo;
     private int pkgNum;
-    private Date lastestOnline;
+    private Calendar lastestOnline;
 
     public int getId() {
         return id;
@@ -59,11 +60,11 @@ public class ClientBean {
         this.pkgNum = pkgNum;
     }
 
-    public Date getLastestOnline() {
+    public Calendar getLastestOnline() {
         return lastestOnline;
     }
 
-    public void setLastestOnline(Date lastestOnline) {
+    public void setLastestOnline(Calendar lastestOnline) {
         this.lastestOnline = lastestOnline;
     }
 }
