@@ -31,6 +31,19 @@ public class ClientsDAO {
         return clientId;
     }
 
+    public synchronized void refreshClient(int id, String ip) {
+        try {
+            ClientBean client = clientBeans.get(id);
+            client.setClientIP(ip);
+            client.setPkgNum(client.getPkgNum() + 1);
+            Calendar now = Calendar.getInstance();
+            now.add(Calendar.MINUTE, +MIN_OFFSET);
+            client.setLastestOnline(now);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<ClientBean> getClientList() {
         return (ArrayList<ClientBean>) clientBeans.clone();
     }

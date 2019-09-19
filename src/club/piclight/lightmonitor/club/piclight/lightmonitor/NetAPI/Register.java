@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.Calendar;
 import java.util.UUID;
 
@@ -31,7 +28,7 @@ public class Register extends HttpServlet {
             ResponseBody responseBody = new ResponseBody(200, "OK", client.getUserSession(), client.getId());
 
             resp.setStatus(200);
-            resp.setContentType("text/json");
+            resp.setContentType("application/json");
 
             ServletOutputStream out = resp.getOutputStream();
             out.println(new Gson().toJson(responseBody));
@@ -39,8 +36,8 @@ public class Register extends HttpServlet {
             out.close();
         } else {
             ServletOutputStream out = resp.getOutputStream();
-            resp.setStatus(200);
-            resp.setContentType("text");
+            resp.setStatus(400);
+            resp.setContentType("text/plain");
             out.println("Error! Please Check Your Parameter");
         }
     }

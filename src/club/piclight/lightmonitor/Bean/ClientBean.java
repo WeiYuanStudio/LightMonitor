@@ -1,7 +1,6 @@
 package club.piclight.lightmonitor.Bean;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class ClientBean {
     private int id;
