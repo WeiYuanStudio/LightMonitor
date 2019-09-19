@@ -19,18 +19,24 @@ public class ClientsDAO {
         client.setClientInfo("Windows 10");
         client.setPkgNum(1);
         Calendar now = Calendar.getInstance();
-        now.add(Calendar.MINUTE, +1);
+        now.add(Calendar.MINUTE, +MIN_OFFSET);
         client.setLastestOnline(now);
         registerClient(client);
     }
 
-    private void registerClient(ClientBean client) {
-        client.setId(clientBeans.size() + MIN_OFFSET);
+    public synchronized int registerClient(ClientBean client) {
+        int clientId = clientBeans.size();
+        client.setId(clientBeans.size());
         clientBeans.add(client);
+        return clientId;
     }
 
     public ArrayList<ClientBean> getClientList() {
         return (ArrayList<ClientBean>) clientBeans.clone();
+    }
+
+    public ClientBean getClientById(int id) {
+        return clientBeans.get(id);
     }
 
     public static ClientsDAO getClientsDao() {
