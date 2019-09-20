@@ -1,12 +1,13 @@
 from urllib import request, parse
 import json
+import time
+import configparser
 
-serverLocation = 'http://localhost:8080/LightMonitor_war_exploded'
+serverLocation = 'http://94.191.113.229:90'
 
 registerSubdomain = '/register'
 
-heartbeartSubdomain = '/heartbeart'
-
+heartbeatSubdomain = '/heartbeart'
 
 def register(clientname):
     param = {
@@ -17,17 +18,24 @@ def register(clientname):
                           registerSubdomain + '?' + urlParam, method='GET')
     responseStream = request.urlopen(req)
     responseText = responseStream.read().decode('utf-8')
-    responseJSON = json.loads(responseText)
+    try:
+        responseJSON = json.loads(responseText)
+    except json.JSONDecodeError:
+        print("Can't not decode response JSON, Please check you serverLocation settings")
+        exit(0)
     return responseJSON
 
 
-def sendHeartbeart(usersession):
+def sendHeartbeat(usersession):
     param = {
         'usersession': usersession
     }
     urlParam = parse.urlencode(param)
     req = request.Request(url=serverLocation +
-                          heartbeartSubdomain + '?' + urlParam, method='GET')
+                          heartbeatSubdomain + '?' + urlParam, method='GET')
     responseStream = request.urlopen(req)
     responseText = responseStream.read().decode('utf-8')
+
+    print('Send Heartbeat at time ' + time.strftime("%Y-%m-%d %H:%M:%S",
+                                                    time.localtime()) + ' Response ' + responseText)
     return responseText
