@@ -1,0 +1,3 @@
+[DEFAULT]
+clientname = PythonClient
+serverLocation = http://1.1.1.1
