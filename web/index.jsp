@@ -91,13 +91,10 @@
                         if (ClientsDAO.getClientsDao().getClientList().isEmpty()) {
                     %>
                     <div class="alert alert-danger" role="alert">
-                        <h4 class="alert-heading">Server list is empty</h4>
-                        <p>Aww yeah, you successfully read this important alert message. This example text is going to
-                            run a bit longer so that you can see how spacing within an alert works with this kind of
-                            content.</p>
+                        <h4 class="alert-heading">Client list is empty</h4>
+                        <p>No client has registered yet, Please check your Client configure and network.</p>
                         <hr>
-                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and
-                            tidy.</p>
+                        <p class="mb-0">Please check README at <a href="https://github.com/WeiYuanStudio/LightMonitor">WeiYuanStudio/LightMonitor@GitHub</a> for details</p>
                     </div>
                     <%
                         }
