@@ -1,0 +1,12 @@
+language: java
+jdk:
+- openjdk11
+deploy:
+  provider: releases
+  api_key:
+    secure: BH3m7uzBBg+PhsXcyPem8uR44OlXCW+CTPAUXjoKFKqgIi2Kb1NL6PLDGwqNB772xBzw0/3mC2r7RM1GBeVhlxBl7kobvMv1CkD1nNChX8YPsSR/ukZzwqC56ZlpJd01KGzz/gxgwLiq5nOtEXQKHlwXQAQqKXen6IBEqGDl2B50lCH4YrRvGQNhuwtLzcifmxKfFSQFFbMYg5U+5oZZnuUuevbJWeD+thIE0uDtsgLOkQvvhqqPR0C7lCaSQHAMQqMVkjvu/82G1zzYbeb7Mlo9Rvkygp1qHwdrEtnSrDDa8g5Unhcj45b6ivseN5viMiSimbD3CiRdY22o3ICCjQY3uLSm8MXCpTcraLK+aIjdSOGJRI/fEgAOefD1YBjqjVGjmzN16wrC55uaIPTZmp3eJm164xxXexCo5aUlkunxYrHoGjruYQ6UMqvxWFxjnNv6Vg9kulEeW7Gay8Ury1uHoUTUed9/u3ziTAgHlkBel0vofDZ1v7ZwOLAqVSETjYzi26NKfbpUZ176IS5egMtogSk4+32UZW+1jOVwzfeNNSSsQjzrm57NdOiYs0/QHxS6/SkYrdbGIy0mgYaQRLsU2YFHP8X66JOFWh0aFK7THnh7VdScf0tG95pxIXG8Du7Kp04/KKQRFY4ynr193TBz+GctEai+1s3/l4l2Qn4=
+  file: /home/travis/build/WeiYuanStudio/LightMonitor/target/lightmonitor-1.0-SNAPSHOT.war
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: WeiYuanStudio/LightMonitor

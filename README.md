@@ -4,7 +4,7 @@
 
 ![Light Monitor.jpg](https://i.loli.net/2019/09/20/A7NUWKsDo8znj4m.jpg)
 
-[DEMO演示地址](94.191.113.229:90)
+![DEMO演示地址](94.191.113.229:90)
 
 ## 使用方法
 
@@ -48,7 +48,7 @@ python main.py
 python3 main.py
 ```
 
-如果跑不起来，务必检查一下Python环境的版本
+如果报import error 跑不起来，务必检查一下Python环境的版本，若是Windows10系统，可以到系统的环境变量里面上下移动一下Python3和Python2的优先位置，以达到切换运行版本的效果。
 
 ### 服务端部署
 
