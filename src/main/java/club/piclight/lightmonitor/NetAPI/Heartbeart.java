@@ -1,4 +1,4 @@
-package club.piclight.lightmonitor.club.piclight.lightmonitor.NetAPI;
+package club.piclight.lightmonitor.NetAPI;
 
 import club.piclight.lightmonitor.Bean.ClientBean;
 import club.piclight.lightmonitor.DAO.ClientsDAO;
