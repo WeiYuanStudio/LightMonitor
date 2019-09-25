@@ -58,7 +58,7 @@ public class Register extends HttpServlet {
         private String usersession;
         private int id;
 
-        public ResponseBody(int code, String message, String usersession, int id) {
+        ResponseBody(int code, String message, String usersession, int id) {
             this.code = code;
             this.message = message;
             this.usersession = usersession;

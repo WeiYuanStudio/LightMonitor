@@ -13,15 +13,6 @@ public class ClientsDAO {
     private ArrayList<ClientBean> clientBeans = new ArrayList<ClientBean>();
 
     private ClientsDAO() {
-//        ClientBean client = new ClientBean();
-//        client.setClientName("Adam's PC");
-//        client.setClientIP("1.1.1.1");
-//        client.setClientInfo("Windows 10");
-//        client.setPkgNum(1);
-//        Calendar now = Calendar.getInstance();
-//        now.add(Calendar.MINUTE, +MIN_OFFSET);
-//        client.setLastestOnline(now);
-//        registerClient(client);
     }
 
     public synchronized int registerClient(ClientBean client) {
