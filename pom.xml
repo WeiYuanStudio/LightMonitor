@@ -34,6 +34,7 @@
     </dependencies>
 
     <build>
+        <finalName>LightMonitor</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
