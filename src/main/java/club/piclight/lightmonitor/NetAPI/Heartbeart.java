@@ -31,13 +31,19 @@ public class Heartbeart extends HttpServlet {
 
                 ServletOutputStream out = resp.getOutputStream();
                 out.println("OK! Refresh LastestOnline Time.");
+            } else {
+                resp.setStatus(400);
+                resp.setContentType("text/plain");
+
+                ServletOutputStream out = resp.getOutputStream();
+                out.println("Error! User No found.");
             }
         } else {
             resp.setStatus(400);
             resp.setContentType("text/plain");
 
             ServletOutputStream out = resp.getOutputStream();
-            out.println("Error! User No found.");
+            out.println("Error! Please Check Your Parameter");
         }
     }
 
