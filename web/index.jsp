@@ -61,7 +61,7 @@
                         </thead>
                         <tbody>
                         <%
-                            for (ClientBean client : ClientsDAO.getClientsDao().getClientList()) {
+                            for (ClientBean client : ClientsDAO.getClientsDao().getClientList()) { //TODO: Refactor this to DAO, use iterator later
                         %>
                         <tr class="success <%= (client.getLastestOnline().compareTo(Calendar.getInstance()) > 0 ? "table-success" : "table-danger")%>">
                             <td scope="row"><%= client.getId()%>
@@ -85,7 +85,7 @@
                         </tbody>
                     </table>
                     <%
-                        if (ClientsDAO.getClientsDao().getClientList().isEmpty()) {
+                        if (ClientsDAO.getClientsDao().getClientList().isEmpty()) { //TODO: Refactor this to DAO
                     %>
                     <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading">Client list is empty</h4>

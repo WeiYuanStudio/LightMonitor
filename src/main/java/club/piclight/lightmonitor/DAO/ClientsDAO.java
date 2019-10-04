@@ -12,9 +12,6 @@ public class ClientsDAO {
     private static ClientsDAO clientsDAO = new ClientsDAO();
     private ArrayList<ClientBean> clientBeans = new ArrayList<ClientBean>();
 
-    private ClientsDAO() {
-    }
-
     public synchronized int registerClient(ClientBean client) {
         int clientId = clientBeans.size();
         client.setId(clientBeans.size());
@@ -30,6 +27,15 @@ public class ClientsDAO {
             Calendar now = Calendar.getInstance();
             now.add(Calendar.MINUTE, +MIN_OFFSET);
             client.setLastestOnline(now);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void infoClient(int id, String info) {
+        try {
+            ClientBean client = clientBeans.get(id);
+            client.setClientInfo(info);
         } catch (Exception e) {
             e.printStackTrace();
         }

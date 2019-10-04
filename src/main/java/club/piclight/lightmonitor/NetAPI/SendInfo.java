@@ -12,25 +12,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(urlPatterns = "/heartbeart")
-public class Heartbeart extends HttpServlet {
+@WebServlet(urlPatterns = "/sendinfo")
+public class SendInfo extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
         String userSession = null;
+        String info = null;
         int id;
         userSession = req.getParameter("usersession");
-        if (userSession != null) {
-            id = SessionGetUser(userSession);
+        info = req.getParameter("info");
+        if (userSession != null && info != null) {
+            id = sessionGetId(userSession);
             if (id != -1) {
-                ClientsDAO.getClientsDao().refreshClient(id, req.getRemoteHost());
+                ClientsDAO.getClientsDao().infoClient(id, info);
                 resp.setStatus(200);
                 resp.setContentType("text/plain");
 
                 ServletOutputStream out = resp.getOutputStream();
-                out.println("OK! Refresh LastestOnline Time.");
+                out.println("OK!Set client info");
             } else {
                 resp.setStatus(400);
                 resp.setContentType("text/plain");
@@ -47,14 +49,13 @@ public class Heartbeart extends HttpServlet {
         }
     }
 
-
     /**
      * Use Usersession to search user id TODO: Refactor this repeat method to DAO
      *
      * @param session
      * @return
      */
-    private int SessionGetUser(String session) {
+    private int sessionGetId(String session) {
         ArrayList<ClientBean> clientBeans = ClientsDAO.getClientsDao().getClientList();
         for (ClientBean client : clientBeans) {
             if (session.equals(client.getUserSession()))
