@@ -1,10 +1,14 @@
 # Light Monitor
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/WeiYuanStudio/LightMonitor)
+![Build Status](https://travis-ci.com/WeiYuanStudio/LightMonitor.svg?branch=master)
+![Website](https://img.shields.io/website?up_message=online&url=http%3A%2F%2F94.191.113.229%3A1080)
+
 一个简单的客户端在线监控面板
 
 ![Light Monitor.jpg](https://i.loli.net/2019/09/20/A7NUWKsDo8znj4m.jpg)
 
-![DEMO演示地址](94.191.113.229:90)
+![DEMO演示地址](http://94.191.113.229:90)
 
 ## 使用方法
 
