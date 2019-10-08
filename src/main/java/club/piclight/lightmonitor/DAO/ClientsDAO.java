@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 
 public class ClientsDAO {
-    private static int MIN_OFFSET = 1;
     private static ClientsDAO clientsDAO = new ClientsDAO();
     private ArrayList<ClientBean> clientBeans = new ArrayList<>();
 
@@ -43,7 +42,6 @@ public class ClientsDAO {
             client.setClientIP(ip); //Set client ip address
             client.setPkgNum(client.getPkgNum() + 1); //PkgNum add one
             Calendar now = Calendar.getInstance(); //Get now time
-            now.add(Calendar.MINUTE, +MIN_OFFSET);// Calendar calculate Plus one minute
             client.setLastestOnline(now); //Set the calculate result as client latest online time
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,9 +7,18 @@
 --%>
 <%@ page import="club.piclight.lightmonitor.DAO.ClientsDAO" %>
 <%@ page import="club.piclight.lightmonitor.Bean.ClientBean" %>
-<%@ page import="java.util.Date" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%!
+    private static int MIN_OFFSET = 1; //Check if online Minute offset
+
+    private boolean isOnline(ClientBean client) {
+        Calendar latest = client.getLastestOnline(); //Get client latest online time
+        Calendar now = Calendar.getInstance(); //Get current time
+        now.add(Calendar.MINUTE, -MIN_OFFSET); //Current time minus ONE Minute
+        return latest.compareTo(now) > 0; //Compare time
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,10 +72,10 @@
                         <%
                             for (ClientBean client : ClientsDAO.getInstance().getClientList()) { //TODO: Refactor this to DAO, use iterator later
                         %>
-                        <tr class="success <%= (client.getLastestOnline().compareTo(Calendar.getInstance()) > 0 ? "table-success" : "table-danger")%>">
+                        <tr class="success <%= (isOnline(client) ? "table-success" : "table-danger")%>">
                             <td scope="row"><%= client.getId()%>
                             </td>
-                            <td scope="row"><%= (client.getLastestOnline().compareTo(Calendar.getInstance()) > 0 ? "Online" : "Offline")%>
+                            <td scope="row"><%= (isOnline(client) ? "Online" : "Offline")%>
                             </td>
                             <td scope="row"><%= client.getClientName()%>
                             </td>
