@@ -33,7 +33,7 @@ public class Heartbeart extends HttpServlet {
             id = SessionGetUser(userSession); //Search client id by usersession
             if (id != -1) { //User found, set client info and response
                 //Refresh client
-                ClientsDAO.getClientsDao().refreshClient(id, req.getRemoteHost());
+                ClientsDAO.getInstance().refreshClient(id, req.getRemoteHost());
 
                 //Set response head
                 resp.setStatus(200);
@@ -70,7 +70,7 @@ public class Heartbeart extends HttpServlet {
      * @return
      */
     private int SessionGetUser(String session) {
-        ArrayList<ClientBean> clientBeans = ClientsDAO.getClientsDao().getClientList();
+        ArrayList<ClientBean> clientBeans = ClientsDAO.getInstance().getClientList();
         for (ClientBean client : clientBeans) {
             if (session.equals(client.getUserSession()))
                 return client.getId();

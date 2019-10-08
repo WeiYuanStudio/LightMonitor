@@ -69,8 +69,8 @@ public class Register extends HttpServlet {
         clientBean.setUserSession(userSession);
 
         //Register ClientBean on ClientsDAO
-        int id = ClientsDAO.getClientsDao().registerClient(clientBean);
-        return ClientsDAO.getClientsDao().getClientById(id);
+        int id = ClientsDAO.getInstance().registerClient(clientBean);
+        return ClientsDAO.getInstance().getClientById(id);
     }
 
     /**

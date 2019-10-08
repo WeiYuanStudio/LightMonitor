@@ -34,7 +34,7 @@ public class SendInfo extends HttpServlet {
         if (userSession != null && info != null) {
             id = sessionGetId(userSession); //Search client id by usersession
             if (id != -1) { //User found, set client info and response
-                ClientsDAO.getClientsDao().infoClient(id, info); //Set client info
+                ClientsDAO.getInstance().infoClient(id, info); //Set client info
 
                 //Set response head
                 resp.setStatus(200);
@@ -70,7 +70,7 @@ public class SendInfo extends HttpServlet {
      * @return User id, if user not found return -1
      */
     private int sessionGetId(String session) {
-        ArrayList<ClientBean> clientBeans = ClientsDAO.getClientsDao().getClientList();
+        ArrayList<ClientBean> clientBeans = ClientsDAO.getInstance().getClientList();
         for (ClientBean client : clientBeans) {
             if (session.equals(client.getUserSession()))
                 return client.getId();

@@ -10,7 +10,13 @@ import java.util.ArrayList;
 public class ClientsDAO {
     private static int MIN_OFFSET = 1;
     private static ClientsDAO clientsDAO = new ClientsDAO();
-    private ArrayList<ClientBean> clientBeans = new ArrayList<ClientBean>();
+    private ArrayList<ClientBean> clientBeans = new ArrayList<>();
+
+    /**
+     * Private constructor because Singleton Pattern
+     */
+    private ClientsDAO() {
+    }
 
     public synchronized int registerClient(ClientBean client) {
         int clientId = clientBeans.size();
@@ -49,7 +55,15 @@ public class ClientsDAO {
         return clientBeans.get(id);
     }
 
-    public static ClientsDAO getClientsDao() {
+    /**
+     * Get Singleton instance
+     *
+     * @return clientsDAO singleton
+     */
+    public static ClientsDAO getInstance() {
+        if (clientsDAO == null) {
+            clientsDAO = new ClientsDAO();
+        }
         return clientsDAO;
     }
 }
