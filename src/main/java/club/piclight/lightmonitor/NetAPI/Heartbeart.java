@@ -30,7 +30,7 @@ public class Heartbeart extends HttpServlet {
         userSession = req.getParameter("usersession");
 
         if (userSession != null) {
-            id = SessionGetUser(userSession); //Search client id by usersession
+            id = ClientsDAO.getInstance().sessionGetId(userSession); //Search client id by usersession
             if (id != -1) { //User found, set client info and response
                 //Refresh client
                 ClientsDAO.getInstance().refreshClient(id, req.getRemoteHost());
@@ -60,21 +60,5 @@ public class Heartbeart extends HttpServlet {
             ServletOutputStream out = resp.getOutputStream();
             out.println("Error! Please Check Your Parameter");
         }
-    }
-
-
-    /**
-     * Use Usersession to search user id TODO: Refactor this repeat method to DAO
-     *
-     * @param session
-     * @return
-     */
-    private int SessionGetUser(String session) {
-        ArrayList<ClientBean> clientBeans = ClientsDAO.getInstance().getClientList();
-        for (ClientBean client : clientBeans) {
-            if (session.equals(client.getUserSession()))
-                return client.getId();
-        }
-        return -1; //Can't found user by this session
     }
 }

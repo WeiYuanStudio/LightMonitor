@@ -32,7 +32,7 @@ public class SendInfo extends HttpServlet {
         info = req.getParameter("info"); //Get info
 
         if (userSession != null && info != null) {
-            id = sessionGetId(userSession); //Search client id by usersession
+            id = ClientsDAO.getInstance().sessionGetId(userSession); //Search client id by usersession
             if (id != -1) { //User found, set client info and response
                 ClientsDAO.getInstance().infoClient(id, info); //Set client info
 
@@ -61,20 +61,5 @@ public class SendInfo extends HttpServlet {
             ServletOutputStream out = resp.getOutputStream();
             out.println("Error! Please Check Your Parameter");
         }
-    }
-
-    /**
-     * Use usersession to search user id TODO: Refactor this repeat method to DAO
-     *
-     * @param session
-     * @return User id, if user not found return -1
-     */
-    private int sessionGetId(String session) {
-        ArrayList<ClientBean> clientBeans = ClientsDAO.getInstance().getClientList();
-        for (ClientBean client : clientBeans) {
-            if (session.equals(client.getUserSession()))
-                return client.getId();
-        }
-        return -1; //Can't found user by this session
     }
 }

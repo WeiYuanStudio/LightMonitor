@@ -73,6 +73,28 @@ public class ClientsDAO {
     }
 
     /**
+     * Check if client list empty
+     * @return If empty return true
+     */
+    public boolean isEmpty() {
+        return getClientList().isEmpty();
+    }
+
+    /**
+     * Use usersession get client id
+     * @param session usersession
+     * @return id
+     */
+    public int sessionGetId(String session) {
+        ArrayList<ClientBean> clientBeans = getClientList();
+        for (ClientBean client : clientBeans) {
+            if (session.equals(client.getUserSession()))
+                return client.getId(); //User id found, return
+        }
+        return -1; //Can't found user by this session
+    }
+
+    /**
      * Get client by id
      *
      * @param id client id

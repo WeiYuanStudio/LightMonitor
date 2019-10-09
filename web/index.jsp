@@ -70,7 +70,7 @@
                         </thead>
                         <tbody>
                         <%
-                            for (ClientBean client : ClientsDAO.getInstance().getClientList()) { //TODO: Refactor this to DAO, use iterator later
+                            for (ClientBean client : ClientsDAO.getInstance().getClientList()) {
                         %>
                         <tr class="success <%= (isOnline(client) ? "table-success" : "table-danger")%>">
                             <td scope="row"><%= client.getId()%>
@@ -94,7 +94,7 @@
                         </tbody>
                     </table>
                     <%
-                        if (ClientsDAO.getInstance().getClientList().isEmpty()) { //TODO: Refactor this to DAO
+                        if (ClientsDAO.getInstance().isEmpty()) {
                     %>
                     <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading">Client list is empty</h4>
